@@ -6,19 +6,18 @@ import pleaseWait from 'please-wait';
 
 let loadingScreen = pleaseWait.pleaseWait({
     logo: '',
-    backgroundColor: '#4285f4',
+    backgroundColor: '#fff',
     loadingHtml: `
-    <div class="spinner">
-        <div class="double-bounce1"></div>
-        <div class="double-bounce2"></div>
-    </div>
-    `
+        <div id="loader-wrapper">
+			<div id="loader"></div>
+			<div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+		</div>`
 });
-
 
 setTimeout(() => {
     loadApplication();
-});
+}, 1000);
 
 function loadApplication() {
     require.ensure(['./app.js'], (require) => {
