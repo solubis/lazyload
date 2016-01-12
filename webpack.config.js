@@ -15,17 +15,26 @@ module.exports = {
     debug: false,
     devtool: 'source-map',
     resolve: {
-        extensions: ['', '.ts', '.js']
+        extensions: ['', '.ts', '.js', '.jsx', '.rjsx']
     },
     module: {
         loaders: [
             { test: /\.tsx?$/, loader: 'ts' },
             { test: /\.(png|jpg|gif)$/, loader: 'url' },
-            { test: /\.jsx?$/, loader: 'babel',
+            { test: /\.react\.jsx$/, loader: 'babel',
+                query: {
+                    presets: ['es2015', 'stage-0', 'react']
+                },
+                exclude: /node_modules/,
+            },
+            { test: /^(.(?!react))*\.jsx?$/, loader: 'babel',
                 query: {
                     presets: ['es2015', 'stage-0'],
                     cacheDirectory: true,
-                    plugins: ['transform-runtime']
+                        plugins: [
+                        'transform-runtime',
+                        ['transform-react-jsx', {'pragma': 'element'}]
+                    ]
                 },
                 exclude: /node_modules/,
             },

@@ -2,17 +2,18 @@
 
 import './loader.css';
 import 'please-wait/build/please-wait.css';
-import pleaseWait from 'please-wait';
+import splash from 'please-wait';
 
-let loadingScreen = pleaseWait.pleaseWait({
+let loadingScreen = splash.pleaseWait({
     logo: '',
     backgroundColor: '#fff',
-    loadingHtml: `
-        <div id="loader-wrapper">
-			<div id="loader"></div>
-			<div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
-		</div>`
+    loadingHtml:
+    `
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>`
 });
 
 setTimeout(() => {
@@ -20,8 +21,8 @@ setTimeout(() => {
 }, 1000);
 
 function loadApplication() {
-    require.ensure(['./app.js'], (require) => {
-        require('./app.js');
+    require.ensure(['./app.jsx'], (require) => {
+        require('./app.jsx');
 
         loadingScreen.finish();
     });
