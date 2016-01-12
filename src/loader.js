@@ -21,8 +21,8 @@ setTimeout(() => {
 }, 1000);
 
 function loadApplication() {
-    require.ensure(['./app.jsx'], (require) => {
-        require('./app.jsx');
+    require.ensure(['./ng.js'], (require) => {
+        require('./ng.js');
 
         loadingScreen.finish();
     });
