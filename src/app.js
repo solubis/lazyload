@@ -7,6 +7,8 @@ import './scss/app.scss';
 
     console.time('DOM generation');
 
+    let documentFragment = document.createDocumentFragment();
+
     let title = document.createElement('h1');
     let subtitle = document.createElement('small');
     let icon = document.createElement('i');
@@ -19,20 +21,22 @@ import './scss/app.scss';
         alert(event.target.nodeType);
     }
 
-    subtitle.innerHTML = '<a href="">ES6 with SCSS</a>';
+    subtitle.innerHTML = '<a href="">ES6 with SCSS and DOM document Fragment</a>';
     subtitle.addEventListener('click', onClick);
 
     title.appendChild(icon);
     title.appendChild(document.createTextNode(`Hello ${a}`));
     title.appendChild(subtitle);
 
-    document.body.querySelector('.inner').appendChild(title);
+    documentFragment.appendChild(title);
 
     for (let i = 0; i < 10000; i++) {
         let element = document.createElement('p');
         element.textContent = 'Element ' + i;
-        document.body.appendChild(element);
+        documentFragment.appendChild(element);
     }
+
+    document.body.querySelector('.inner').appendChild(documentFragment);
 
     console.timeEnd('DOM generation');
 

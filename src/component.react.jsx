@@ -11,7 +11,7 @@ function render () {
         <i className="material-icons">devices</i>
         Hello World
         <small>
-            <a href='' onClick={log}>ES6 with SCSS and Deku.js</a>
+            <a href='' onClick={log}>ES6 with SCSS and React.js</a>
         </small>
     </h1>
     )

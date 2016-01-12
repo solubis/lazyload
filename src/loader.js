@@ -18,7 +18,7 @@ let loadingScreen = splash.pleaseWait({
 
 setTimeout(() => {
     loadApplication();
-}, 1000);
+});
 
 function loadApplication() {
     require.ensure(['./ng.js'], (require) => {
